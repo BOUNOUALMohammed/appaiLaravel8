@@ -17,8 +17,8 @@ class CreatePaiementsTable extends Migration
             $table->id();
             $table->double("montantpaye");
             $table->integer("mois");
-            $table->foreignId("stagiaires_id")->constrained("stagiaires");
-            $table->foreignId("users_id")->constrained("users");
+            $table->foreignId("stagiaire_id")->constrained("stagiaires");
+            $table->foreignId("user_id")->constrained("users");
         });
         Schema::enableForeignKeyConstraints();
     }
@@ -31,7 +31,7 @@ class CreatePaiementsTable extends Migration
     public function down()
     {
         Schema::table('paiements',function(Blueprint $table){
-            $table->dropColumn(["stagiaires_id"],["users_id"]);
+            $table->dropColumn(["stagiaire_id"],["user_id"]);
 
         });
         Schema::dropIfExists('paiements');
